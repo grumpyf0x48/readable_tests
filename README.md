@@ -77,4 +77,21 @@ Our test now fully complies with BDD style, except of course the lack of `when` 
     }
 ```
 
+We could even merge the "When" and "Then" sections like this:
+
+```
+    @Test
+    public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
+        // Given
+        var user1 = mock(User.class);
+        var user2 = mock(User.class);
+        given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
+
+        // When Then
+        then(userService.retrieveUsers())
+                .as("Should have returned the list of users")
+                .containsExactlyInAnyOrder(user1, user2);
+    }
+```
+
 See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceFullBDDStyleTest.java)
