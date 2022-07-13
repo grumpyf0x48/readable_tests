@@ -12,7 +12,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 @SpringBootTest
-public class UserServiceBDDTest {
+public class UserServiceBDDStyleTest {
 
     @Autowired
     private UserService userService;

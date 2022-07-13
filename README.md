@@ -26,6 +26,8 @@ Only `Mockito.when` keyword is used, but it is used in the "Given" section, whic
     }
 ```
 
+See [Unit tests with Mockito.when, Assertions.assertThat](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
+
 ## 2. Readable tests using `given`
 
 `BDDMockito.given` keyword is used in the "Given" section, which makes more sense and is easier to read :-)
@@ -45,3 +47,5 @@ Only `Mockito.when` keyword is used, but it is used in the "Given" section, whic
         assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
     }
 ```
+
+See [Unit tests with BDDMockito.given, Assertions.assertThat](src/test/java/org/grumpyf0x48/readable/UserServiceBDDStyleTest.java)
