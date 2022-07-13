@@ -1,4 +1,4 @@
-# A sample project showing that tests written with BDDMockito are more readable
+# A sample project showing that tests written with BDDMockito and AssertJ are more readable
 
 Most of the time Unit tests are written following the BDD style (Given, When, Then), and use `Mockito` framework and
 `AssertJ` assertions, which is shown in section 1.
