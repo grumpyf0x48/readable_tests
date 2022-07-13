@@ -28,7 +28,7 @@ Only `Mockito.when` keyword is used, but it is used in the "Given" section, whic
 
 See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
 
-## 2. Readable tests using `BDDMockito.given`, `Assertions.assertThat` from AssertJ and `BDDMockito.given`
+## 2. Readable tests using `BDDMockito.given` and `Assertions.assertThat` from AssertJ
 
 `BDDMockito.given` keyword is used in the "Given" section, which makes more sense and is easier to read :-)
 
