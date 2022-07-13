@@ -6,6 +6,8 @@ Most of the time Unit tests are written following the BDD style (Given, When, Th
 In section 2, we show how `BDDMockito` can help to write more readable tests replacing `Mockito.when` keyword by
 `BDDMockito.given` in the "Given" section.
 
+Section 3 improves the code of section 2 using `BDDAssertions.then` assertions from AssertJ.
+
 ## 1. Usual tests using `Mockito.when` and `Assertions.assertThat` from AssertJ
 
 Only `Mockito.when` keyword is used, but it is used in the "Given" section, which is puzzling :-(
@@ -49,3 +51,30 @@ See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
 ```
 
 See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceBDDStyleTest.java)
+
+## 3. Even more readable tests using `BDDMockito.given`, `Assertions.assertThat` and `BDDAssertions.then` from AssertJ
+
+"Then" sections uses `BDDAssertions.then` assertions.
+
+Our test now fully complies with BDD style, except of course the lack of `when` keyword (which is implicit) in the
+"When" section.
+
+```
+    @Test
+    public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
+        // Given
+        var user1 = mock(User.class);
+        var user2 = mock(User.class);
+        given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
+
+        // When
+        var retrievedUsers = userService.retrieveUsers();
+
+        // Then
+        then(retrievedUsers)
+                .as("Should have returned the list of users")
+                .containsExactlyInAnyOrder(user1, user2);
+    }
+```
+
+See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceFullBDDStyleTest.java)
