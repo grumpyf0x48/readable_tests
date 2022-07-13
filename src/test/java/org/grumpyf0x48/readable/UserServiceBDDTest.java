@@ -9,7 +9,6 @@ import static java.util.Collections.emptyList;
 import static java.util.List.of;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 
 @SpringBootTest
@@ -30,7 +29,6 @@ public class UserServiceBDDTest {
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        then(userRepository).should().retrieveUsers();
         assertThat(retrievedUsers).isEmpty();
     }
 
@@ -45,7 +43,6 @@ public class UserServiceBDDTest {
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        then(userRepository).should().retrieveUsers();
         assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
     }
 }

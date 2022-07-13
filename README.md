@@ -1,8 +1,14 @@
 # A sample project showing that tests written with BDDMockito are more readable
 
-## Usual tests using `when`
+Most of the time Unit tests are written following the BDD style (Given, When, Then), and use `Mockito` framework and
+`AssertJ` assertions, which is shown in section 1.
 
-Only `Mockito.when` keyword is used, but it is used in the "GIVEN" section, which is puzzling :-(
+In section 2, we show how `BDDMockito` can help to write more readable tests replacing `Mockito.when` keyword by
+`BDDMockito.given` in the "Given" section.
+
+## 1. Usual tests using `when`
+
+Only `Mockito.when` keyword is used, but it is used in the "Given" section, which is puzzling :-(
 
 ```
     @Test
@@ -20,10 +26,9 @@ Only `Mockito.when` keyword is used, but it is used in the "GIVEN" section, whic
     }
 ```
 
-## Readable tests using `given` and `then`
+## 2. Readable tests using `given`
 
-Both `Mockito.given` and `Mockito.then` keywords are used, respectively in the "GIVEN" and "THEN" section, which makes
-more sense and is easier to read :-)
+`BDDMockito.given` keyword is used in the "Given" section, which makes more sense and is easier to read :-)
 
 ```
     @Test
@@ -37,7 +42,6 @@ more sense and is easier to read :-)
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        then(userRepository).should().retrieveUsers();
         assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
     }
 ```
