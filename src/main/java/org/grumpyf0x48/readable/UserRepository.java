@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public interface UserRepository {
+public class UserRepository {
 
-    List<User> retrieveUsers();
+    public List<User> retrieveUsers() {
+        return null;
+    }
 }
