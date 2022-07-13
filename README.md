@@ -6,7 +6,7 @@ Most of the time Unit tests are written following the BDD style (Given, When, Th
 In section 2, we show how `BDDMockito` can help to write more readable tests replacing `Mockito.when` keyword by
 `BDDMockito.given` in the "Given" section.
 
-## 1. Usual tests using `when`
+## 1. Usual tests using `Mockito.when` and `Assertions.assertThat` from AssertJ
 
 Only `Mockito.when` keyword is used, but it is used in the "Given" section, which is puzzling :-(
 
@@ -26,9 +26,9 @@ Only `Mockito.when` keyword is used, but it is used in the "Given" section, whic
     }
 ```
 
-See [Unit tests with Mockito.when, Assertions.assertThat](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
+See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
 
-## 2. Readable tests using `given`
+## 2. Readable tests using `BDDMockito.given`, `Assertions.assertThat` from AssertJ and `BDDMockito.given`
 
 `BDDMockito.given` keyword is used in the "Given" section, which makes more sense and is easier to read :-)
 
@@ -48,4 +48,4 @@ See [Unit tests with Mockito.when, Assertions.assertThat](src/test/java/org/grum
     }
 ```
 
-See [Unit tests with BDDMockito.given, Assertions.assertThat](src/test/java/org/grumpyf0x48/readable/UserServiceBDDStyleTest.java)
+See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceBDDStyleTest.java)
