@@ -16,15 +16,15 @@ Only `Mockito.when` keyword is used, but it is used in the "Given" section, whic
     @Test
     public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
         // Given
-        var user1 = mock(User.class);
-        var user2 = mock(User.class);
-        when(userRepository.retrieveUsers()).thenReturn(of(user1, user2));
+        var user1 = Mockito.mock(User.class);
+        var user2 = Mockito.mock(User.class);
+        Mockito.when(userRepository.retrieveUsers()).thenReturn(of(user1, user2));
 
         // When
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
+        Assertions.assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
     }
 ```
 
@@ -38,15 +38,15 @@ See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
     @Test
     public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
         // Given
-        var user1 = mock(User.class);
-        var user2 = mock(User.class);
-        given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
+        var user1 = Mockito.mock(User.class);
+        var user2 = Mockito.mock(User.class);
+        BDDMockito.given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
 
         // When
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
+        Assertions.assertThat(retrievedUsers).containsExactlyInAnyOrder(user1, user2);
     }
 ```
 
@@ -63,19 +63,21 @@ Our test now fully complies with BDD style, except of course the lack of `when` 
     @Test
     public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
         // Given
-        var user1 = mock(User.class);
-        var user2 = mock(User.class);
-        given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
+        var user1 = Mockito.mock(User.class);
+        var user2 = Mockito.mock(User.class);
+        BDDMockito.given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
 
         // When
         var retrievedUsers = userService.retrieveUsers();
 
         // Then
-        then(retrievedUsers)
+        BDDAssertions.then(retrievedUsers)
                 .as("Should have returned the list of users")
                 .containsExactlyInAnyOrder(user1, user2);
     }
 ```
+
+See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceFullBDDStyleTest.java)
 
 We could even merge the "When" and "Then" sections like this:
 
@@ -83,15 +85,13 @@ We could even merge the "When" and "Then" sections like this:
     @Test
     public void retrieveUsersShouldReturnExistingUsersWhenUsersArePresent() {
         // Given
-        var user1 = mock(User.class);
-        var user2 = mock(User.class);
-        given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
+        var user1 = Mockito.mock(User.class);
+        var user2 = Mockito.mock(User.class);
+        BDDMockito.given(userRepository.retrieveUsers()).willReturn(of(user1, user2));
 
         // When Then
-        then(userService.retrieveUsers())
+        BDDAssertions.then(userService.retrieveUsers())
                 .as("Should have returned the list of users")
                 .containsExactlyInAnyOrder(user1, user2);
     }
 ```
-
-See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceFullBDDStyleTest.java)
