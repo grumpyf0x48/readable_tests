@@ -1,6 +1,6 @@
 # A sample project showing that tests written with BDDMockito and AssertJ are more readable
 
-Most of the time Unit tests are written following the BDD style (Given, When, Then), and use `Mockito` framework and
+Nowadays, most Unit tests are written following the BDD style (Given, When, Then) and use `JUnit`, `Mockito` framework and
 `AssertJ` assertions, which is shown in section 1.
 
 In section 2, we show how `BDDMockito` can help to write more readable tests replacing `Mockito.when` keyword by
@@ -32,7 +32,7 @@ See [source code](src/test/java/org/grumpyf0x48/readable/UserServiceTest.java)
 
 ## 2. Readable tests using `BDDMockito.given` and `Assertions.assertThat` from AssertJ
 
-`BDDMockito.given` keyword is used in the "Given" section, which makes more sense and is easier to read :-)
+`Mockito.when` calls have been replaced by `BDDMockito.given` ones in the "Given" section, which makes more sense and is easier to read :-)
 
 ```
     @Test
